@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import './screens/places_list_screen.dart';
+import './screens/add_place_screen.dart';
 import 'package:provider/provider.dart';
 import './providers/great_places.dart';
 
@@ -20,9 +21,12 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: 'My places',
         theme: ThemeData(
-          primarySwatch: Colors.blue,
+          primarySwatch: Colors.teal,
         ),
         home: const PlacesList() ,
+        routes: {
+        '/add_place':(context) => const AddPlaceScreen(),
+        },
       ),
     );
   }

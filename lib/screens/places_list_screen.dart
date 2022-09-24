@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+
 class PlacesList extends StatelessWidget {
   const PlacesList({super.key});
 
@@ -11,7 +12,9 @@ class PlacesList extends StatelessWidget {
         centerTitle: true,
         actions: [
           IconButton(
-            onPressed: (){}, 
+            onPressed: (){
+              Navigator.of(context).pushNamed('/add_place');
+            }, 
             icon: const Icon(Icons.add))
         ]),
       body: const Center(
