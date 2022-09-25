@@ -19,9 +19,11 @@ class PlacesList extends StatelessWidget {
             }, 
             icon: const Icon(Icons.add))
         ]),
-      body:  Center(
-        child: Consumer<GreatPlaces>(
-          //child: const Center(child: Text('Got no places yet. Start adding some!')),
+      body:  FutureBuilder(
+        future: Provider.of<GreatPlaces>(context, listen: false).getandSetData(),
+        builder: (ctx, snapshot) => snapshot.connectionState == ConnectionState.waiting
+        ? const CircularProgressIndicator()  
+        :Consumer<GreatPlaces>(
           builder:(ctx, greatPlaces, child)=> 
           greatPlaces.items.isEmpty 
           ? const Center(child: Text('Got no places yet. Start adding some!')) 
@@ -34,8 +36,8 @@ class PlacesList extends StatelessWidget {
                 //...Go to detail page
               },
             ),
-          ),) ,
-        ),  
+          ),),
+      ),  
     );
   }
 }

@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:places/widgets/location_item.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter/material.dart';
 
@@ -54,6 +55,8 @@ class _AddPlaceScreenState extends State<AddPlaceScreen> {
                     ),
                     const SizedBox(height: 16,),
                     ImageItem(_selectImage),
+                    const SizedBox(height: 16,),
+                    const LocationItem(),
                   ],
                 ),
               ), ),
