@@ -5,7 +5,8 @@ import 'package:path/path.dart' as p;
 import 'package:path_provider/path_provider.dart' as syspath;
 
 class ImageItem extends StatefulWidget {
-  const ImageItem({super.key});
+  final Function onSelectImage;
+  const ImageItem(this.onSelectImage, {super.key});
 
   @override
   State<ImageItem> createState() => _ImageItemState();
@@ -20,14 +21,19 @@ class _ImageItemState extends State<ImageItem> {
       source: ImageSource.camera,
       maxWidth: 600,
     );
+    if(imageFile == null){
+      return;
+    }
     setState(() {
-      _storedImage = File(imageFile!.path);
+      _storedImage = File(imageFile.path);
     });
 
     final appDir = await syspath.getApplicationDocumentsDirectory();
-    final fileName = p.basename(imageFile!.path);
+    final fileName = p.basename(imageFile.path);
     final newPlace = File('${appDir.path}/$fileName');
     final savedImage = await File(imageFile.path).copy(newPlace.path);
+
+    widget.onSelectImage(savedImage);
   }
 
   @override

@@ -15,7 +15,7 @@ class PlaceLocation{
 class Place{
   final String id;
   final String title;
-  final PlaceLocation location;
+  final PlaceLocation? location;
   final File image;  // for the image from the local device camera
 
   Place({
